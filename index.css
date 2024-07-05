@@ -53,3 +53,21 @@
     margin: 5px;
     /* Optional: Adjust alignment of items */
 }
+.books > img{
+    height:200px;
+    width:200px;
+}
+.body{
+    display: flex;
+    flex-direction: row;
+    border : 2px solid black;
+    width: 200px;
+    margin: 20px;
+    height: auto;
+}
+.book-container{
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
