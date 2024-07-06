@@ -1,4 +1,5 @@
 **Namaste React**
+# CODE SLOW
 # Parcel
 - Dev Build
 - Local Server
@@ -23,4 +24,9 @@
 - Normal JS utility functions
 - useState()
 - useEffect()
+    - First body is rendered
+    - Then useEffect callback function will be called
 - Whenever state variable updates , react re render its components
+
+# IMPORTANT
+- Whenever local state variable updates , react triggers a reconciliation cycle (re-renders) the whole componet
