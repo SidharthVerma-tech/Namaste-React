@@ -30,3 +30,17 @@
 
 # IMPORTANT
 - Whenever local state variable updates , react triggers a reconciliation cycle (re-renders) the whole componet
+
+# React Component Life Cycle
+- # MOUNTING
+   - Parent Contsructor called
+   - Parent Render Called
+   - Child Constructor Called
+   - set The User State
+   - Child Render Called (With Dummy Data)
+   - DidMount Called
+   - API fetched (Data gets Updated)
+ # UPDATE
+   - Child Render Called (With updated Data)
+   - Component Did update
+   
