@@ -13,20 +13,23 @@ const Header = () => {
     console.log("Header rendered");
     return(
         <>
-        <div className="header">
-            <div className="logo-container">
-                <img className="logo" src={LOGO_URL}/>
+        <div className="flex justify-between items-center  bg-blue-100 shadow-lg">
+            <div className="">
+                <img className="w-24 rounded-full" src={LOGO_URL}/>
             </div>
             <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>
+                <ul className='flex m-1 p-1'>
+                    <li className='px-4'><Link to='/'>Home</Link></li>
+                    <li className='px-4'>
                         <Link to='/about'>About Us</Link>
                     </li>
-                    <li>
+                    <li className='px-4'>
                         <Link to='/contact'>Contact Us</Link>
                     </li>
-                    <li>Cart</li>
+                    <li className='px-4'>
+                        <Link to='/grocery'>Grocery</Link>
+                    </li>
+                    <li className='px-4'>Cart</li>
                     <button className='login-btn' onClick={()=>
                         loginBtn === 'Login' ? setLoginBtn('Logout'): setLoginBtn('Login')
                     }>{loginBtn}</button>

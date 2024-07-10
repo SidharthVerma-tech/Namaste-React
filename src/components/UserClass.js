@@ -26,9 +26,9 @@ class UserClass extends React.Component{
                 <button className="cnt-btn" onClick={()=>{
                     // NEVER UPDATE STATE VARIABLE DIRECTY
                     // this.state.count = this.state.count+1 // never
-                    this.setState ({
-                        count : this.state.count+1
-                    })
+                    // this.setState ({
+                    //     count : this.state.count+1
+                    // })
                 }}>CLick me
                 </button>
                 <img src={avatar_url}/>

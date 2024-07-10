@@ -1,17 +1,32 @@
 import { IMG_URL } from "../utils/Constants";
 import { Link } from "react-router-dom";
-const ResItem = (props) => {
-    const {resData} = props
-    const {cloudinaryImageId, name, cuisines, avgRating} = resData?.info;
+
+const ResItem = ({ resData }) => {
+    const { cloudinaryImageId, name, cuisines, avgRating } = resData?.info;
+
     return (
-        <div className='res-card' style={{backgroundColor:"#f0f0f0"}}>
-           <img src={IMG_URL+resData.info.cloudinaryImageId}/>
-           <Link to={'/restaurants/'+resData.info.id}>
-                <h3>{name}</h3>
-            </Link>
-            <h5>{cuisines.join(', ')} </h5>
-            <h5>Rating : {avgRating}</h5>
+        <div className="m-4 p-4 w-[300px] hover:bg-slate-200 shadow-lg">
+            <img
+                src={IMG_URL + cloudinaryImageId}
+                className="w-40 h-40 rounded-md mr-4"
+                alt={name}
+            />
+            <div className="flex flex-col justify-center">
+                <Link to={`/restaurants/${resData.info.id}`}>
+                    <h3 className="font-semibold text-black hover:text-blue-500 transition-colors">{name}</h3>
+                </Link>
+                <div className="flex flex-wrap">
+                    <h5 className="text-gray-600">Cuisines:</h5>
+                    <div className="flex flex-wrap gap-1">
+                        {cuisines.map((cuisine, index) => (
+                            <span key={index} className="bg-gray-300 px-2 py-1 rounded-md text-sm">{cuisine}</span>
+                        ))}
+                    </div>
+                </div>
+                <h5 className="text-gray-600">Rating: {avgRating}</h5>
+            </div>
         </div>
-    )
-}
-export default ResItem
+    );
+};
+
+export default ResItem;
