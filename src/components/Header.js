@@ -1,9 +1,11 @@
 import {LOGO_URL} from '../utils/Constants'
-import { useState , useEffect} from 'react'
+import { useState , useEffect, useContext} from 'react'
 import { Link } from 'react-router-dom'
+import UserContext from '../utils/UserContext'
 const Header = () => {
     //Local State Variables - Super powerful Variables
     const [loginBtn, setLoginBtn] = useState('Login')
+    const User = useContext(UserContext);
     useEffect(()=>{
         console.log("Use EFfect called");
     },[loginBtn])
@@ -30,9 +32,12 @@ const Header = () => {
                         <Link to='/grocery'>Grocery</Link>
                     </li>
                     <li className='px-4'>Cart</li>
-                    <button className='login-btn' onClick={()=>
+                    <button className='' onClick={()=>
                         loginBtn === 'Login' ? setLoginBtn('Logout'): setLoginBtn('Login')
                     }>{loginBtn}</button>
+                    <li>
+                        {User.loggedInUser}
+                    </li>
                 </ul>
             </div>
         </div>

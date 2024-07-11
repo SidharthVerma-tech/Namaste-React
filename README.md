@@ -43,4 +43,14 @@
  # UPDATE
    - Child Render Called (With updated Data)
    - Component Did update
+
+# HIGHER ORDER COMPONENT
+- Input => Functional Component => Enhanced Functional Component 
+
+- A controlled component is the component whose value is controlled by react state. 
+- We want parent to control the show items or control the state this is called controlled componennts
+
+# PROPS DRILLING
+- REACT CONTEXT IS A FEATURE WHICH ALLOWS US TO USE REACT COMPONENT AT ANY LEVEL, WITHOUT PASSING PROPS
+- MANUALLY AT EVERY LEVEL
    

@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-import ResItem from "./ResItem";
+import { useState, useEffect, useContext } from "react";
+import ResItem , {IsPromoted} from "./ResItem";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 //import Shimmer from "./Shimmer";
 
   const Body = () => {
@@ -8,9 +9,11 @@ import useOnlineStatus from "../utils/useOnlineStatus";
   const [originalRests, setOriginalRests] = useState([]);
   const [text, setText] = useState("");
   const onlineStatus = useOnlineStatus();
+  const PromotedResItem = IsPromoted(ResItem);
+  const {loggedInUser, setUserName} = useContext(UserContext)
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5/?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5/?lat=28.7040592&lng=77.10249019999999&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
     const fetchedRests =
@@ -23,10 +26,6 @@ import useOnlineStatus from "../utils/useOnlineStatus";
   useEffect(() => {
     fetchData();
   }, []);
-
-  // if (rests.length === 0) {
-  //   return <Shimmer />;
-  // }
 
   const handleSearch = () => {
     const filtRests = originalRests.filter((res) =>
@@ -59,15 +58,28 @@ import useOnlineStatus from "../utils/useOnlineStatus";
           <button className="bg-blue-300 shdow-md p-2.5 text-white hover:shadow-lg rounded-md" onClick={handleSearch}>
             Search
           </button>
+          <label>Username</label>
+          <input type="text" 
+          className="p-2 border-2 border-black"
+          value={loggedInUser}
+          onChange={(e)=>{
+            setUserName(e.target.value)
+          }}
+          />
         </div>
         <button className="flex mx-3 my-auto justify-center bg-blue-300 shdow-md p-2.5 text-white hover:shadow-lg rounded-md" onClick={handleFilter}>
           Top Restaurants
         </button>
       </div>
       <div className="flex flex-wrap">
+        
+
          {rests.map((restaurant) => (
-          <ResItem key={restaurant.info.id} resData={restaurant} />
+           restaurant.info.promoted ? <PromotedResItem key={restaurant.info.id} resData={restaurant}/>
+            : 
+          <ResItem key={restaurant.info.id} resData={restaurant}/>
         ))}
+
       </div>
     </div>
   );
