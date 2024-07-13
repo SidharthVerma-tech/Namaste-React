@@ -1,8 +1,12 @@
+import { useDispatch } from "react-redux";
 import { CLDN_IMG } from "../utils/Constants";
-
+import { addItems,clearCart } from "../utils/cartSlice";
 const ItemList = ({ items }) => {
     console.log(items);
-
+    const dispatch = useDispatch()
+    const handleAddClick = (item) =>{
+        dispatch(addItems(item))
+    }
     return (
         <div className="font-thin">
             <div className="flex flex-col text-left">
@@ -15,7 +19,9 @@ const ItemList = ({ items }) => {
                         </div>
                         <div className="mt-2 md:mt-0 md:ml-4 flex-shrink-0">
                         <div className="absolute">
-                                <button className="bg-white text-green-400 p-0.2 font-semibold text-base rounded-sm">
+                                <button 
+                                className="bg-white text-green-400 p-0.2 font-semibold text-base rounded-sm"
+                                onClick={()=>handleAddClick(item)}>
                                     Add+
                                 </button>
                                 </div>

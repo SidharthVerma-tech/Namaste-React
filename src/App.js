@@ -5,10 +5,14 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Error from './components/Error'
 import ResMenu from './components/ResMenu'
+import Cart from './components/Cart.js'
 import { Suspense, lazy, useEffect } from 'react'
 import { createBrowserRouter, RouterProvider , Outlet} from 'react-router-dom'
 import UserContext from './utils/UserContext.js'
 import {useState} from 'react'
+import {Provider} from 'react-redux'
+import appStore from './utils/appStore.js'
+
 const Grocery = lazy(()=>import('./components/Grocery'))
 const AppLayout = () => {
     const [userName, setUserName] = useState(null);
@@ -19,12 +23,14 @@ const AppLayout = () => {
         setUserName(data.name);
     }, [])
     return (
+        <Provider store={appStore}>
         <UserContext.Provider value={{loggedInUser : userName, setUserName}}>
         <div className="App">
             <Header/>
             <Outlet/>
         </div>
         </UserContext.Provider>
+        </Provider>
     )
 }
 const AppRouter = createBrowserRouter([
@@ -51,6 +57,10 @@ const AppRouter = createBrowserRouter([
             {
                 path : "/grocery",
                 element : <Suspense fallback={"This page is Loading"}><Grocery/></Suspense>
+            },
+            {
+                path : "/cart",
+                element : <Cart/>
             }
         ],
         errorElement : <Error/>,

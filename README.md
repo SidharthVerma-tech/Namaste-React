@@ -53,4 +53,16 @@
 # PROPS DRILLING
 - REACT CONTEXT IS A FEATURE WHICH ALLOWS US TO USE REACT COMPONENT AT ANY LEVEL, WITHOUT PASSING PROPS
 - MANUALLY AT EVERY LEVEL
+
+
+# REDUX
+ - Install @reduxjs/toolkit and react-redux
+ - Build our store
+ - Connect our store to our app
+ - Create Cart Slice
+ - Dispatch an action
+ - Read the data using selector
+ - Slice Contai reducers
+ - Our whole store contain one big reducer which contains small reducers
+ 
    

@@ -2,9 +2,13 @@ import {LOGO_URL} from '../utils/Constants'
 import { useState , useEffect, useContext} from 'react'
 import { Link } from 'react-router-dom'
 import UserContext from '../utils/UserContext'
+import { useSelector } from 'react-redux'
+import cart from '../utils/cartSlice'
 const Header = () => {
     //Local State Variables - Super powerful Variables
     const [loginBtn, setLoginBtn] = useState('Login')
+    // Subscribing to our store
+    const cartItems = useSelector((store)=>store.cart.items)
     const User = useContext(UserContext);
     useEffect(()=>{
         console.log("Use EFfect called");
@@ -31,7 +35,10 @@ const Header = () => {
                     <li className='px-4'>
                         <Link to='/grocery'>Grocery</Link>
                     </li>
-                    <li className='px-4'>Cart</li>
+                    <li className='px-4'>
+                        <Link to='/cart'>Cart Items - {cartItems.length}</Link>
+                        
+                    </li>
                     <button className='' onClick={()=>
                         loginBtn === 'Login' ? setLoginBtn('Logout'): setLoginBtn('Login')
                     }>{loginBtn}</button>
